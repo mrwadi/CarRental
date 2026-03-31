@@ -9,7 +9,11 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface CarRepository extends JpaRepository<com.crd.interview.carrental.reservation.model.Car,Long> {
-    //FIXME fix query to find available car , join with reservations
-    @Query("SELECT c FROM Car c ORDER BY c.id LIMIT 1")
+
+    @Query("SELECT c FROM Car c " +
+            "WHERE c.carType = :carType " +
+            "AND NOT EXISTS (SELECT r FROM Reservation r WHERE r.car = c AND r.startDate < :reservationEndDate AND r.endDate > :reservationStartDate) " +
+            "ORDER BY c.id " +
+            "LIMIT 1")
     Optional<Car> findAvailableCar(CarType carType, LocalDateTime reservationStartDate, LocalDateTime reservationEndDate);
 }
