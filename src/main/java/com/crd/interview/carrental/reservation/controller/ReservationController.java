@@ -1,4 +1,4 @@
-package com.crd.interview.carrental.reservation;
+package com.crd.interview.carrental.reservation.controller;
 
 import com.crd.interview.carrental.reservation.dto.ReservationRequest;
 import com.crd.interview.carrental.reservation.dto.ReservationResponse;
