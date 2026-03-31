@@ -27,8 +27,7 @@ public class ReservationService {
     @Transactional
     public ReservationResponse createReservation(ReservationRequest reservationRequest) {
         LocalDateTime reservationEndDate = reservationRequest.startDate().plusDays(reservationRequest.numberOfDays());
-
-        //FIXME lock item for this transaction - select for update
+        
         Car availableCar = carRepository.findAvailableCar(
                         reservationRequest.carType(),
                         reservationRequest.startDate(),
