@@ -18,6 +18,7 @@ public class Car {
     private String licensePlate;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private CarType carType;
 
     @Override
