@@ -1,7 +1,10 @@
 package com.crd.interview.carrental.reservation.init;
+
 import com.crd.interview.carrental.reservation.model.Car;
 import com.crd.interview.carrental.reservation.model.CarType;
+import com.crd.interview.carrental.reservation.model.Customer;
 import com.crd.interview.carrental.reservation.repository.CarRepository;
+import com.crd.interview.carrental.reservation.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,7 @@ import java.util.List;
 public class DevelopmentDataLoader implements CommandLineRunner {
 
     private final CarRepository carRepository;
+    private final CustomerRepository customerRepository;
 
     @Override
     public void run(String... args) {
@@ -43,6 +47,11 @@ public class DevelopmentDataLoader implements CommandLineRunner {
                         .carType(CarType.VAN)
                         .licensePlate("KK6666")
                         .build()
+        ));
+
+        customerRepository.saveAll(List.of(
+                Customer.builder().email("first@t.com").build(),
+                Customer.builder().email("second@t.com").build()
         ));
 
     }
