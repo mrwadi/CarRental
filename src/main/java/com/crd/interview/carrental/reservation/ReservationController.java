@@ -3,6 +3,7 @@ package com.crd.interview.carrental.reservation;
 import com.crd.interview.carrental.reservation.dto.ReservationRequest;
 import com.crd.interview.carrental.reservation.dto.ReservationResponse;
 import com.crd.interview.carrental.reservation.service.ReservationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @PostMapping
-    public ResponseEntity<ReservationResponse> create(@RequestBody ReservationRequest request) {
+    public ResponseEntity<ReservationResponse> create(@Valid @RequestBody ReservationRequest request) {
         ReservationResponse result = reservationService.createReservation(request);
         return ResponseEntity.ok(result);
     }
