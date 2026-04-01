@@ -13,7 +13,7 @@ public class OutDatedReservationDBCleaner {
 
 //    private final ReservationRepository reservationRepository;
 
-    @Scheduled(cron = "0 * * * * *") // Co minutę
+    @Scheduled(fixedDelay = 2000)
     @Transactional
     public void cleanOutdatedReservations() {
         log.info("Delete items form db job triggered");
